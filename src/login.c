@@ -392,13 +392,19 @@ void xorg(
 	if (pid == 0)
 	{
 		char x_cmd[1024];
+    char is_silent[45] = "";
+    
+    if (config.silent)
+      strcpy(is_silent, "-keeptty 2> ~/.local/share/xorg/Xorg.log");
+
 		snprintf(
 			x_cmd,
 			1024,
-			"%s %s %s",
+			"%s %s %s %s",
 			config.x_cmd,
 			display_name,
-			vt);
+			vt,
+      is_silent);
 		execl(pwd->pw_shell, pwd->pw_shell, "-c", x_cmd, NULL);
 		exit(EXIT_SUCCESS);
 	}

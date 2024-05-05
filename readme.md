@@ -1,3 +1,7 @@
+Adds a `silent` config to `/etc/ly/config.ini` that redirects Xorg output to a log file in `~/.local/share/xorg/Xorg.log`
+This fork allows silent boot with a rootless X start.
+
+`xauth_cmd` default config is also changed to redirect output to `~/.local/share/xorg/Xauth.log`
 
 # Ly - a TUI display manager
 ![Ly screenshot](https://user-images.githubusercontent.com/5473047/88958888-65efbf80-d2a1-11ea-8ae5-3f263bce9cce.png "Ly screenshot")
@@ -57,7 +61,7 @@ changing the source code won't be necessary :)
 ## Cloning and Compiling
 Clone the repository
 ```
-$ git clone --recurse-submodules https://github.com/fairyglade/ly
+$ git clone --recurse-submodules https://github.com/Hashino/ly-silent
 ```
 
 Change the directory to ly

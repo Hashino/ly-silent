@@ -102,6 +102,7 @@ struct config
 	char* x_cmd_setup;
 	char* xauth_cmd;
 	char* xsessions;
+  bool silent;
 };
 
 extern struct lang lang;

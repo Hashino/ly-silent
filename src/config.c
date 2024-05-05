@@ -198,6 +198,7 @@ void config_load(const char *cfg_path)
 		{"x_cmd_setup", &config.x_cmd_setup, config_handle_str},
 		{"xauth_cmd", &config.xauth_cmd, config_handle_str},
 		{"xsessions", &config.xsessions, config_handle_str},
+		{"silent", &config.silent, config_handle_bool},
 	};
 
 	uint16_t map_len[] = {41};
@@ -308,8 +309,9 @@ void config_defaults()
 	config.x_cmd = strdup("/usr/bin/X");
 	config.xinitrc = strdup("~/.xinitrc");
 	config.x_cmd_setup = strdup(DATADIR "/xsetup.sh");
-	config.xauth_cmd = strdup("/usr/bin/xauth");
+	config.xauth_cmd = strdup("/usr/bin/xauth > ~/.local/share/xorg/Xauth.log 2>&1");
 	config.xsessions = strdup("/usr/share/xsessions");
+  config.silent = true;
 }
 
 void lang_free()
