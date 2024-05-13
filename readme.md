@@ -66,7 +66,7 @@ $ git clone --recurse-submodules https://github.com/Hashino/ly-silent
 
 Change the directory to ly
 ```
-$ cd ly
+$ cd ly-silent
 ```
 
 Compile

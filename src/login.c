@@ -411,7 +411,7 @@ void xorg(
 
 	int ok;
 	xcb_connection_t* xcb;
-
+  
 	do
 	{
 		xcb = xcb_connect(NULL, NULL);
@@ -430,12 +430,21 @@ void xorg(
 	if (xorg_pid == 0)
 	{
 		char de_cmd[1024];
+    char is_silent[45] = "";
+    
+    if (config.silent){
+      strcpy(is_silent, "2> ~/.local/share/xorg/");
+      strcat(is_silent, desktop_cmd);
+      strcat(is_silent, ".log");
+    }
+    
 		snprintf(
 			de_cmd,
 			1024,
-			"%s %s",
+			"%s %s %s",
 			config.x_cmd_setup,
-			desktop_cmd);
+			desktop_cmd,
+      is_silent);
 		execl(pwd->pw_shell, pwd->pw_shell, "-c", de_cmd, NULL);
 		exit(EXIT_SUCCESS);
 	}
